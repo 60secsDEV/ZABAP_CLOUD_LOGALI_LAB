@@ -21,15 +21,15 @@ CLASS zcl_lab_01_var_cb9980002790 IMPLEMENTATION.
     mv_purchase_date = cl_abap_context_info=>get_system_date( ).
     mv_purchase_time = cl_abap_context_info=>get_system_time( ).
 
-    out->write( |Fecha: { mv_purchase_date date = USER } Hora: { mv_purchase_time time = USER } | ).
+    out->write( |Fecha: { mv_purchase_date DATE = USER } Hora: { mv_purchase_time TIME = USER } | ).
 
-    DATA mv_price    TYPE f                     VALUE '10.5'.
-    DATA mv_tax      TYPE i                     VALUE 16.
+    DATA mv_price TYPE f VALUE '10.5'.
+    DATA mv_tax   TYPE i VALUE 16.
 
     out->write( |Precio: { mv_price } Impuesto: { mv_tax }%| ).
 
-    DATA mv_increase TYPE decfloat16            VALUE '20.5'.
-    DATA mv_discount TYPE decfloat34            VALUE '10.5'.
+    DATA mv_increase TYPE decfloat16 VALUE '20.5'.
+    DATA mv_discount TYPE decfloat34 VALUE '10.5'.
 
     out->write( |Incremento: { mv_increase } Descuento: { mv_discount }| ).
 
@@ -38,12 +38,13 @@ CLASS zcl_lab_01_var_cb9980002790 IMPLEMENTATION.
 
     out->write( |Tipo: { mv_type } Envío: { mv_shipping }| ).
 
-    DATA mv_id_code  TYPE n LENGTH 4            VALUE 1110.
-    DATA mv_qr_code  TYPE x LENGTH 5            VALUE 'F5CF'.
+    DATA mv_id_code TYPE n LENGTH 4 VALUE 1110.
+    DATA mv_qr_code TYPE x LENGTH 5 VALUE 'F5CF'.
 
     out->write( |ID Código: { mv_id_code } Código QR: { mv_qr_code }| ).
 
     "--! 2. Tipo de datos complejos
+
     TYPES: BEGIN OF mty_customer,
              id       TYPE i,
              customer TYPE c LENGTH 15,
@@ -77,7 +78,7 @@ CLASS zcl_lab_01_var_cb9980002790 IMPLEMENTATION.
     "--! 4. Objetos de datos
 
     DATA mv_product  TYPE string  VALUE `Laptop`.
-    DATA mv_bar_code TYPE xstring VALUE '12121 121211'.
+    DATA mv_bar_code TYPE xstring VALUE '121210121211'.
 
     "--! 5 Constantes
 
@@ -90,24 +91,28 @@ CLASS zcl_lab_01_var_cb9980002790 IMPLEMENTATION.
     CONSTANTS mc_id_code  TYPE n LENGTH 4            VALUE 1110.
     CONSTANTS mc_qr_code  TYPE x LENGTH 5            VALUE 'F5CF'.
     CONSTANTS mc_product  TYPE string                VALUE `Laptop`.
-    CONSTANTS mc_bar_code TYPE xstring               VALUE '12121 121211'.
+    CONSTANTS mc_bar_code TYPE xstring               VALUE '121210121211'.
+    CONSTANTS: BEGIN OF mc_customer,
+                 id       TYPE i           VALUE 1,
+                 customer TYPE c LENGTH 15 VALUE 'Pedro Perez',
+                 age      TYPE i           VALUE 30,
+               END OF mc_customer.
 
-    mv_price    = mc_price   .
-    mv_tax      = mc_tax     .
+    mv_price    = mc_price.
+    mv_tax      = mc_tax.
     mv_increase = mc_increase.
     mv_discount = mc_discount.
-    mv_type     = mc_type    .
+    mv_type     = mc_type.
     mv_shipping = mc_shipping.
-    mv_id_code  = mc_id_code .
-    mv_qr_code  = mc_qr_code .
-    mv_product  = mc_product .
+    mv_id_code  = mc_id_code.
+    mv_qr_code  = mc_qr_code.
+    mv_product  = mc_product.
     mv_bar_code = mc_bar_code.
+    ms_customer = mc_customer.
 
     "--! 6. Declaraciones en Línea
 
     DATA(lv_product)  = mv_product.
     DATA(lv_bar_code) = mv_bar_code.
-
-
   ENDMETHOD.
 ENDCLASS.
