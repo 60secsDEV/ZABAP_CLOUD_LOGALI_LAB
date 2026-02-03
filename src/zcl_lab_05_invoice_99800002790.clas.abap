@@ -17,7 +17,7 @@ CLASS zcl_lab_05_invoice_99800002790 IMPLEMENTATION.
 
   METHOD if_oo_adt_classrun~main.
 
-    "--! 1. Concatenación
+    "--! 1. Concatenación .
 
     DATA mv_exercise     TYPE n LENGTH 4.
     DATA mv_invoice_no   TYPE n LENGTH 8.
