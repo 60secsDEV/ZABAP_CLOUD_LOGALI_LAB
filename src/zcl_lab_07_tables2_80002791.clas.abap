@@ -241,6 +241,6 @@ CLASS zcl_lab_07_tables2_80002791 IMPLEMENTATION.
 
     out->write( data = |Currency: { lv_currency }| ).
 
-
+ "
   ENDMETHOD.
 ENDCLASS.
